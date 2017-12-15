@@ -1,0 +1,26 @@
+{
+  "name": "hangman-node",
+  "version": "1.0.0",
+  "description": "hangman node.js version",
+  "main": "hangman.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtoasis/hangman-node.js.git"
+  },
+  "keywords": [
+    "hangman"
+  ],
+  "author": "Julian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtoasis/hangman-node.js/issues"
+  },
+  "homepage": "https://github.com/mtoasis/hangman-node.js#readme",
+  "dependencies": {
+    "inquirer": "^4.0.1",
+    "word-list-google": "^1.0.1"
+  }
+}
