@@ -23,7 +23,9 @@ var getWords = function () {
         fs.writeFile("word.txt", toWrite, function () {
         })
         
-        console.log("\nHangman Start!"+"\n"+blankArray)
+        this.choosenWord = choosenWord;
+        this.blankArray = blankArray;
+        this.previousLetters = [];        
         
     }
 }

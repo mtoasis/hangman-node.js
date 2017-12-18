@@ -2,33 +2,50 @@ var fs = require('fs');
 
 var makeBlank = function () {
 
-    this.checkBlanks = function (userinput) {
-        fs.readFile("word.txt", "utf8", function (error, data) {
-            var dataArray = data.split("//");
-            var word = dataArray[0];
-            var blankArray = dataArray[1].split(" ");      
-            var wordCount = word.length;
-            var displayArray = "";
-            var wordSplit = word.split("")
-            var inputRecord = dataArray[2]+userinput;
+    this.lifeLeft = 15;
 
-            for (var i = 0; i < wordCount; i++) {
+    this.checkBlanks = function (userinput, word, blankArray, previousLetters) {
 
-                if (userinput === wordSplit[i]) {
-                    blankArray[i] = userinput;
-                }
+        var wordCount = word.length;
+        var displayArray = "";
+        var wordSplit = word.split("")
+        var inputRecord = previousLetters + userinput;
+        var flag = false;
+        blankArray = blankArray.split(" ");
+
+        for (var i = 0; i < wordCount; i++) {
+
+            if (userinput === wordSplit[i]) {
+                blankArray[i] = userinput;
+                flag = true;
             }
-            for (var i = 0; i < wordCount; i++) {
-                displayArray += blankArray[i] + " "
-            }
-            var toWrite = word + "//" + displayArray + "//" + inputRecord;
-            fs.writeFile("word.txt", toWrite, function () {
-            })
-            console.log(displayArray)
-            
+        }
+        for (var i = 0; i < wordCount; i++) {
+            displayArray += blankArray[i] + " "
+        }        
 
-        })
+        for (var i = 0; i < previousLetters.length; i++) {
+            if (userinput === previousLetters[i]) {
+                flag = true
+            }
+        }
+
+        if (!flag) {
+            this.lifeLeft -= 1;
+        }
+
+        var blankArray_disp = "";
+        for (var i = 0; i < blankArray.length; i++) {
+            blankArray_disp += blankArray[i] + " ";
+        }
+
+        this.blankArray = blankArray_disp;
+        this.previousLetters = inputRecord;
+        this.word = word;
+
+        console.log(displayArray)
     }
 }
 
-    module.exports = makeBlank;
+
+module.exports = makeBlank;
