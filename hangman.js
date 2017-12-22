@@ -99,6 +99,7 @@ function restart() {
     ]).then(function (n) {
 
         if (n.do === "Restart!") {
+            make_blank.lifeLeft = 15;
             gameOn = true;
             initiate()
             main()
